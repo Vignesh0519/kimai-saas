@@ -1,7 +1,13 @@
-name: Terraform Deploy
+name: Infra Deploy
 
 on:
   push:
+    branches:
+      - main
+    paths:
+      - 'terraform/**/*.tf'
+      - 'terraform/**/*.tfvars'
+  pull_request:
     branches:
       - main
 
@@ -28,16 +34,21 @@ jobs:
         with:
           terraform_version: 1.8.5
 
+      # Only run init & apply if push to main and infra files changed
       - name: Terraform Init
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform -chdir=terraform init
 
       - name: Terraform Apply
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform -chdir=terraform apply -auto-approve
 
       - name: Save Terraform Outputs
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform -chdir=terraform output -json > tf-output.json
 
       - name: Upload Outputs Artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
         with:
           name: tf-output
