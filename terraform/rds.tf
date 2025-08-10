@@ -7,7 +7,7 @@ resource "random_password" "db_password" {
 
 # Store the password in AWS Secrets Manager
 resource "aws_secretsmanager_secret" "db_password" {
-  name        = "${var.project_name}-db-password"
+  name        = "${var.project_name}-db-password2"
   description = "RDS password for ${var.project_name}"
 }
 
