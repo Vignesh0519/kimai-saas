@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kimai
+  labels:
+    app: kimai
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: kimai
+  template:
+    metadata:
+      labels:
+        app: kimai
+    spec:
+      containers:
+        - name: kimai
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8001
+          env:
+            - name: DATABASE_URL
+              value: "mysql://{{ .Values.db.user }}:{{ .Values.db.password }}@tcp({{ .Values.db.host }}:3306)/{{ .Values.db.name }}"
