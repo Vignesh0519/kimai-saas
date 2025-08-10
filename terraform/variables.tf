@@ -1,11 +1,13 @@
 variable "region" {
   description = "AWS region"
   type        = string
+  default     = "us-east-1"
 }
 
 variable "project_name" {
   description = "Project name for tagging and naming resources"
   type        = string
+  default = "kimai-saas"
 }
 
 variable "db_username" {
@@ -23,6 +25,7 @@ variable "db_name" {
 variable "node_instance_type" {
   description = "EKS node instance type"
   type        = string
+  default     = "t3.medium"
 }
 
 variable "node_desired_size" {
