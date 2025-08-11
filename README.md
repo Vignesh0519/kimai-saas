@@ -20,15 +20,6 @@ The solution is built for **high availability, scalability, observability, and c
 
 ---
 
-## 📦 Repository Structure
-terraform/ # Infrastructure as Code (VPC, EKS, RDS, S3, Route53, ACM)
-helm/kimai/ # Helm chart for Kimai deployment
-.github/workflows/ # CI/CD pipeline (Terraform + Helm)
-docs/ # Architecture diagram, request flow, cost breakdown
-README.md # This file
-
----
-
 ## 🛠 Deployment Guide
 
 ### 1. Prerequisites
@@ -92,5 +83,3 @@ RDS MySQL	$15	db.t3.micro (multi-AZ optional)
 S3	~$1	Storage + requests
 ACM	Free	SSL certificates
 CloudWatch	~$3	Logs + metrics
-Total: ~$93/month (low traffic)		
-
