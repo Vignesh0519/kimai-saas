@@ -1,7 +1,7 @@
 # Kimai SaaS Deployment – DevOps Candidate Assignment
 
 ## Overview
-This repository contains the Infrastructure-as-Code, Helm charts, and CI/CD pipeline required to deploy [Kimai](https://www.kimai.org/) as a **multi-tenant SaaS application** in a cloud production-ready environment.
+This repository contains the Infrastructure-as-Code, Helm charts, and CI/CD pipeline required to deploy [Kimai](https://www.kimai.org/) as a **multi-tenant SaaS application**
 
 The solution is built for **high availability, scalability, observability, and compliance**, allowing deployment in **any AWS region** while avoiding hardcoded secrets.
 
@@ -13,7 +13,6 @@ The solution is built for **high availability, scalability, observability, and c
 2. **EKS (Elastic Kubernetes Service)** – Runs Kimai containers across multiple Availability Zones.
 3. **RDS (MySQL)** – Persistent database for timesheet data.
 4. **S3 Bucket** – Stores uploaded files and backups.
-5. **Route53 + ACM** – DNS & SSL for secure HTTPS access.
 6. **NGINX Ingress** – Manages traffic routing into the cluster.
 7. **Prometheus & Grafana** – Observability stack for metrics and dashboards.
 8. **GitHub Actions CI/CD** – Automates provisioning and deployment.
@@ -22,17 +21,11 @@ The solution is built for **high availability, scalability, observability, and c
 ---
 
 ## 📦 Repository Structure
-## 📦 Repository Structure
 terraform/ # Infrastructure as Code (VPC, EKS, RDS, S3, Route53, ACM)
 helm/kimai/ # Helm chart for Kimai deployment
-ansible/ # Optional post-deployment configuration (e.g., monitoring stack)
 .github/workflows/ # CI/CD pipeline (Terraform + Helm)
 docs/ # Architecture diagram, request flow, cost breakdown
 README.md # This file
-
-markdown
-Copy
-Edit
 
 ---
 
@@ -51,7 +44,6 @@ Go to **Settings → Secrets → Actions** and add:
 |--------------------------|-----------------------------------|
 | `AWS_ACCESS_KEY_ID`      | AWS IAM user key                  |
 | `AWS_SECRET_ACCESS_KEY`  | AWS IAM user secret               |
-| `DOMAIN_NAME`            | Your base domain (e.g. example.com) |
 | `DB_USERNAME`            | Database username                 |
 | `DB_PASSWORD`            | Database password                 |
 
@@ -92,13 +84,13 @@ kubectl port-forward svc/grafana 3000:3000 -n monitoring
 kubectl logs -l app=kimai
 ```
 
-💰 Cost Breakdown (AWS Free Tier + Low-Traffic Estimate)
+### 7. 💰 Cost Breakdown (AWS Free Tier + Low-Traffic Estimate)
+
 Service	Monthly Cost	Notes
 EKS	$74	Managed control plane + 2 t3.medium nodes
 RDS MySQL	$15	db.t3.micro (multi-AZ optional)
 S3	~$1	Storage + requests
 ACM	Free	SSL certificates
-Route53	$0.50	Hosted zone
 CloudWatch	~$3	Logs + metrics
 Total: ~$93/month (low traffic)		
 
