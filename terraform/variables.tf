@@ -7,7 +7,7 @@ variable "region" {
 variable "project_name" {
   description = "Project name for tagging and naming resources"
   type        = string
-  default = "kimai-saas"
+  default     = "kimai-saas"
 }
 
 variable "db_username" {
