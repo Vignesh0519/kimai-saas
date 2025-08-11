@@ -33,7 +33,7 @@ The solution is built for **high availability, scalability, observability, and c
 - AWS account with permissions for EKS, RDS, S3, ACM, Route53.
 - A registered domain in Route53.
 - GitHub repository with Actions enabled.
-- Terraform 1.5+, Helm 3.11+, kubectl 1.27+ (only if deploying locally).
+- Terraform 1.5+, Helm 3.11+, kubectl 1.32+.
 
 ### 2. Set GitHub Secrets
 Go to **Settings → Secrets → Actions** and add:
