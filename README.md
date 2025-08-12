@@ -72,7 +72,7 @@ Default admin credentials are set via Helm values (change after first login).
 
 Metrics: Prometheus scrapes Kubernetes & Kimai metrics.
 
-Dashboards: Grafana accessible via port-forward:
+Grafana accessible with:
 
 ```bash
 kubectl port-forward svc/grafana 3000:3000 -n monitoring
