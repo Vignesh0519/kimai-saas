@@ -77,7 +77,8 @@ Dashboards: Grafana accessible via port-forward:
 ```bash
 kubectl port-forward svc/grafana 3000:3000 -n monitoring
 ```
-## Logs: Retrieved via:
+## Logs: 
+Check logs with:
 ```bash
 kubectl logs -l app=kimai
 ```
